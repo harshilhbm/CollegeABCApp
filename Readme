@@ -1,0 +1,18 @@
+POC just containing the basic CRUD operations, List, Add, Update and Delete. With technology stack as below:
+
+Definition: Student enrollment
+
+Database: CollegeABC
+
+Table: Student_Master(Id, Firstname, Middlename, Lastname, Phone, Gender, Address, City, State, Country, Zipcode)
+
+Client-side: Create 2 components in Angular 5 (Reactive Forms) Use Angular material Components only,
+* First for Listing the students (It should have icons to edit and delete on each record) a Button on Top to Add New, and second for add and Update (single component).
+* Guid in the database and should not be visible on UI
+* Gender should be a radio button with Male and Female
+* Address should be a Text Area
+* City, State, and Country should be Cascading dropdowns
+
+
+Back-end API: Dotnet Core 5 Web APIs (With ADO.NET)
+ 
