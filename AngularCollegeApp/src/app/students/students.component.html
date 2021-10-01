@@ -1,0 +1,65 @@
+<button type="button" (click)="openDialog(null)" mat-raised-button aria-label="Add Student"  color="accent" matTooltip="Add">Add New</button>
+<br><br>
+<div>
+   <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="StudentName">
+         <mat-header-cell *matHeaderCellDef mat-sort-header> Student Name </mat-header-cell>
+         <mat-cell *matCellDef="let students"> {{students.StudentName}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Middlename">
+         <mat-header-cell *matHeaderCellDef mat-sort-header> Middle Name </mat-header-cell>
+         <mat-cell *matCellDef="let students"> {{students.Middlename}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Lastname">
+         <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
+         <mat-cell *matCellDef="let students"> {{students.Lastname}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Address">
+         <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+         <mat-cell *matCellDef="let students"> {{students.Address}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Phone">
+         <mat-header-cell *matHeaderCellDef mat-sort-header> Phone </mat-header-cell>
+         <mat-cell *matCellDef="let students"> {{students.Phone}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Gender">
+         <mat-header-cell *matHeaderCellDef mat-sort-header>  Gender </mat-header-cell>
+         <mat-cell *matCellDef="let students">  {{students.Gender =='Male' ? 'Male' : 'Female'}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Country">
+         <mat-header-cell *matHeaderCellDef mat-sort-header> Country </mat-header-cell>
+         <mat-cell *matCellDef="let students"> {{students.Country}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="State">
+         <mat-header-cell *matHeaderCellDef mat-sort-header> State </mat-header-cell>
+         <mat-cell *matCellDef="let students"> {{students.State}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="City">
+         <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
+         <mat-cell *matCellDef="let students"> {{students.City}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Zipcode">
+         <mat-header-cell *matHeaderCellDef mat-sort-header> Zipcode </mat-header-cell>
+         <mat-cell *matCellDef="let students"> {{students.Zipcode}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Edit">
+         <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
+         <mat-cell *matCellDef="let students">
+            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" type="button" mat-raised-button color="accent" matTooltip="Edit" (click)="loadstudentsToEdit(students.Id)">
+               <mat-icon>edit</mat-icon>
+            </button>
+         </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Delete">
+         <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
+         <mat-cell *matCellDef="let students">
+            <button mat-icon-button aria-label="Example icon button with a delete icon" type="button" mat-raised-button color="accent" matTooltip="Delete" (click)="deleteStudents(students.Id)">
+               <mat-icon>delete_forever</mat-icon>
+            </button>
+         </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+   </mat-table>
+   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

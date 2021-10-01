@@ -1,0 +1,82 @@
+<form [formGroup]="studentsForm" (ngSubmit)="onFormSubmit()">
+   <mat-form-field>
+      <input formControlName="StudentName" matTooltip="Enter students StudentName" matInput placeholder="Student Name" autocomplete="off">
+   </mat-form-field>
+   <mat-error>
+      <span *ngIf="!studentsForm.get('StudentName').value && studentsForm.get('StudentName').touched"></span>
+   </mat-error>
+   <mat-form-field>
+      <input formControlName="Middlename" matTooltip="Enter students Middlename" matInput placeholder="Middle Name" autocomplete="off">
+   </mat-form-field>
+   <mat-error>
+      <span *ngIf="!studentsForm.get('Middlename').value && studentsForm.get('Middlename').touched"></span>
+   </mat-error>
+   <mat-form-field>
+      <input formControlName="Lastname" matTooltip="Enter students Lastname" matInput placeholder="Last Name" autocomplete="off">
+   </mat-form-field>
+   <mat-error>
+      <span *ngIf="!studentsForm.get('Lastname').value && studentsForm.get('Lastname').touched"></span>
+   </mat-error>
+   <mat-form-field>
+      <input formControlName="Phone" matTooltip="Enter students Phone" matInput placeholder="Phone" autocomplete="off">
+   </mat-form-field>
+   <mat-error>
+      <span *ngIf="!studentsForm.get('Phone').value && studentsForm.get('Phone').touched"></span>
+   </mat-error>
+   <span>Gender</span>&nbsp;
+   <mat-radio-group matTooltip="Enter Gender" formControlName="Gender">
+      <mat-radio-button value="Male" [checked]="isMale">Male</mat-radio-button>
+      &nbsp;&nbsp;
+      <mat-radio-button value="Female" [checked]="isFeMale">Female</mat-radio-button>
+      &nbsp;&nbsp;
+   </mat-radio-group>
+   <mat-error>
+      <span *ngIf="!studentsForm.get('Gender').value && studentsForm.get('Gender').touched"></span>
+   </mat-error>
+   <div>
+      <mat-form-field>
+         <mat-label>Country</mat-label>
+         <mat-select (selectionChange)="fillState($event)" formControlName="Country" matTooltip="Select Country" autocomplete="off">
+            <mat-option *ngFor="let Country of (allCountry | async)" [value]="Country.CountryId">
+            {{Country.CountryName}}
+            </mat-option>
+         </mat-select>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+         <mat-label>State</mat-label>
+         <mat-select (selectionChange)="fillCity($event)" formControlName="State" matTooltip="Select State" autocomplete="off">
+            <mat-option *ngFor="let State of (allState | async)" [value]="State.StateId">
+            {{State.StateName}}
+            </mat-option>
+         </mat-select>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+         <mat-label>City</mat-label>
+         <mat-select formControlName="City" (selectionChange)="getSelectedCity($event)" matTooltip="Select City" autocomplete="off">
+            <mat-option *ngFor="let City of (allCity | async)" [value]="City.Cityid">
+            {{City.CityName}}
+            </mat-option>
+         </mat-select>
+      </mat-form-field>
+   </div>
+   <mat-form-field>
+      <textarea matTooltip="Enter Address" formControlName="Address" matInput placeholder="Address" autocomplete="off">
+      </textarea>
+   </mat-form-field>
+   <mat-error>
+      <span *ngIf="!studentsForm.get('Address').value && studentsForm.get('Address').touched"></span>
+   </mat-error>
+   <mat-form-field>
+      <input formControlName="Zipcode" matTooltip="Enter ZipCode" matInput placeholder="Zipcode" minLength="5" maxLength="6" autocomplete="off">
+   </mat-form-field>
+   <mat-error>
+      <span *ngIf="!studentsForm.get('Zipcode').value && studentsForm.get('Zipcode').touched"></span>
+   </mat-error>
+   <button type="submit" mat-raised-button color="accent" matTooltip="Submit" [disabled]="!studentsForm.valid">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+   <button type="reset" mat-raised-button color="accent" matTooltip="Reset" (click)="resetForm()">Reset</button>
+   <p *ngIf="dataSaved"  Class="success" align="left">
+      {{massage}}
+   </p>
+   </form>
