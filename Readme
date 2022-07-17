@@ -1,8 +1,10 @@
+Sample CRUD
+
 POC just containing the basic CRUD operations, List, Add, Update and Delete. With technology stack as below:
 
 Definition: Student enrollment
 
-Database: CollegeABC
+Database: CollegeABC 
 
 Table: Student_Master(Id, Firstname, Middlename, Lastname, Phone, Gender, Address, City, State, Country, Zipcode)
 
